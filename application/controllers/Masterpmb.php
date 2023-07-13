@@ -636,42 +636,71 @@ class Masterpmb extends CI_Controller
         $sheet->setCellValue('K1', 'Jalur Masuk (TES-1/PMDK-0)');
         $sheet->setCellValue('L1', 'Gelombang(1,2,3)');
 
-        $this->db->select('akun_siswa, nama_siswa, tmp_lahir_siswa, tgl_lahir_siswa, agama_siswa, jekel_siswa, alamat_siswa, hp_siswa, email_akun_siswa, jalur, gelombang, validasi_bukti');
-        $this->db->from('pmb_siswa');
-        $this->db->join('pmb_akun', 'akun_siswa = pengenal_akun', 'left');
-        $this->db->join('pmb_prodi', 'akun_siswa = prodi_id_siswa', 'left');
-        $this->db->join('bukti_bayar', 'akun_siswa = akunb_msiswa', 'left');
+        $this->db->from('bukti_bayar');
+        $this->db->join('pmb_akun', 'akunb_msiswa = pengenal_akun', 'left');
+        $this->db->join('pmb_penerimaan', 'akunb_msiswa = siswa_penerimaan', 'left');
+        $this->db->join('pmb_prodi', 'akunb_msiswa = prodi_id_siswa', 'left');
+        $this->db->join('pmb_siswa', 'akunb_msiswa = akun_siswa', 'left');
         $this->db->group_by('akunb_msiswa');
-        $this->db->where('pilihan_satu', $id);
+        $this->db->where('prodi_penerimaan', $id);
         $this->db->where('validasi_bukti', 2);
-        // $this->db->where('')
+
         $query = $this->db->get()->result_array();
         $baris_data = 2;
 
         foreach ($query as $data) {
             $sheet->setCellValue('B' . $baris_data, $data['nama_siswa']);
             $sheet->setCellValue('C' . $baris_data, $data['tmp_lahir_siswa']);
-            $sheet->setCellValue('D' . $baris_data, $data['tgl_lahir_siswa']);
+            $datak = str_replace('/', '-', $data['tgl_lahir_siswa']);
+            if (!empty($data['tgl_lahir_siswa'])) {
+                $sheet->setCellValue('D' . $baris_data, date("Y-m-d", strtotime($datak)));
+            } else {
+                $sheet->setCellValue('D' . $baris_data, '');
+            }
             $sheet->setCellValue('E' . $baris_data, $data['agama_siswa']);
-            $sheet->setCellValue('F' . $baris_data, $data['jekel_siswa']);
+            if ($data['jekel_siswa'] == 'wanita') {
+                $sheet->setCellValue('F' . $baris_data, 'PEREMPUAN');
+            } else {
+                $sheet->setCellValue('F' . $baris_data, 'LAKI-LAKI');
+            }
+            $sheet->setCellValue('G' . $baris_data, '1');
             $sheet->setCellValue('H' . $baris_data, $data['alamat_siswa']);
             $sheet->setCellValue('I' . $baris_data, $data['email_akun_siswa']);
             $sheet->setCellValue('J' . $baris_data, $data['hp_siswa']);
-            $sheet->setCellValue('K' . $baris_data, $data['jalur']);
+            if ($data['jalur'] == 'test') {
+                $sheet->setCellValue('K' . $baris_data, '1');
+            } else {
+                $sheet->setCellValue('K' . $baris_data, '0');
+            }
             $sheet->setCellValue('L' . $baris_data, $data['gelombang']);
             $baris_data++;
         }
 
-
         $writer = new Xlsx($spreadsheet);
 
-        $fileName = 'Data Mahasiswa Prodi.xlsx';
+        if ($id == 1) {
+            $fileName = 'Data Mahasiswa Prodi PBSI.xlsx';
+        } elseif ($id == 2) {
+            $fileName = 'Data Mahasiswa Prodi PMAT.xlsx';
+        } elseif ($id == 3) {
+            $fileName = 'Data Mahasiswa Prodi PEK.xlsx';
+        } elseif ($id == 4) {
+            $fileName = 'Data Mahasiswa Prodi PKN.xlsx';
+        } elseif ($id == 5) {
+            $fileName = 'Data Mahasiswa Prodi PKOM.xlsx';
+        } elseif ($id == 6) {
+            $fileName = 'Data Mahasiswa Prodi PBIO.xlsx';
+        } elseif ($id == 7) {
+            $fileName = 'Data Mahasiswa Prodi PAUD.xlsx';
+        } elseif ($id == 8) {
+            $fileName = 'Data Mahasiswa Prodi PBI.xlsx';
+        } else {
+            $fileName = 'Data Mahasiswa Prodi PGSD.xlsx';
+        }
 
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: filename="' . $fileName . '"');
         $writer->save('php://output');
-
-        // $users = $this->db->query("SELECT * FROM users")->result_array();
     }
 
 
