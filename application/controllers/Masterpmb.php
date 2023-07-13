@@ -641,7 +641,7 @@ class Masterpmb extends CI_Controller
         $this->db->join('pmb_akun', 'akun_siswa = pengenal_akun', 'left');
         $this->db->join('pmb_prodi', 'akun_siswa = prodi_id_siswa', 'left');
         $this->db->join('bukti_bayar', 'akun_siswa = akunb_msiswa', 'left');
-        $this->db->group_by('akun_siswa');
+        $this->db->group_by('akunb_msiswa');
         $this->db->where('pilihan_satu', $id);
         $this->db->where('validasi_bukti', 2);
         // $this->db->where('')
