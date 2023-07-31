@@ -237,14 +237,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             </li>
                             <li class="nav-item">
                                 <a href="<?php echo base_url(); ?>masterpmb/reguler2invalid.html" class="nav-link <?php if (!empty(!empty($reg) && $reg == 'inreg22')) {
-                                                                                                                    echo 'active';
-                                                                                                                } ?>">
+                                                                                                                        echo 'active';
+                                                                                                                    } ?>">
                                     <i class="nav-icon fab fa-black-tie"></i>
                                     <p>
                                         Reguler II InValid
                                     </p>
                                 </a>
-                            </li><li class="nav-item">
+                            </li>
+                            <li class="nav-item">
                                 <a href="<?php echo base_url(); ?>masterpmb/reguler2valid.html" class="nav-link <?php if (!empty(!empty($reg) && $reg == 'reg22')) {
                                                                                                                     echo 'active';
                                                                                                                 } ?>">
@@ -543,6 +544,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <i class="nav-icon fas fa-file"></i>
                         <p>
                             Surat Keputusan
+                            <span class="right badge badge-danger">New</span>
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="<?php echo base_url(); ?>analisis/index.html" class="nav-link <?php if (!empty($analisregis)) {
+                                                                                                echo 'active';
+                                                                                            } ?>">
+                        <i class="nav-icon fas fa-glasses"></i>
+                        <p>
+                            Analisis Registrasi
                             <span class="right badge badge-danger">New</span>
                         </p>
                     </a>
