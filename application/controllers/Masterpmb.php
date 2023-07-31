@@ -649,19 +649,23 @@ class Masterpmb extends CI_Controller
         $baris_data = 2;
 
         foreach ($query as $data) {
-            $sheet->setCellValue('B' . $baris_data, $data['nama_siswa']);
+            $low_nama = strtolower($data['nama_siswa']);
+            $final_nama = ucwords($low_nama);
+            $sheet->setCellValue('B' . $baris_data, $final_nama);
             $sheet->setCellValue('C' . $baris_data, $data['tmp_lahir_siswa']);
             $datak = str_replace('/', '-', $data['tgl_lahir_siswa']);
             if (!empty($data['tgl_lahir_siswa'])) {
-                $sheet->setCellValue('D' . $baris_data, date("Y-m-d", strtotime($datak)));
+                $sheet->setCellValue('D' . $baris_data, date("d-m-Y", strtotime($datak)));
             } else {
                 $sheet->setCellValue('D' . $baris_data, '');
             }
-            $sheet->setCellValue('E' . $baris_data, $data['agama_siswa']);
+            $low_agama = strtolower($data['agama_siswa']);
+            $final_agama = ucwords($low_agama);
+            $sheet->setCellValue('E' . $baris_data, $final_agama);
             if ($data['jekel_siswa'] == 'wanita') {
-                $sheet->setCellValue('F' . $baris_data, 'PEREMPUAN');
+                $sheet->setCellValue('F' . $baris_data, 'P');
             } else {
-                $sheet->setCellValue('F' . $baris_data, 'LAKI-LAKI');
+                $sheet->setCellValue('F' . $baris_data, 'L');
             }
             $sheet->setCellValue('G' . $baris_data, '1');
             $sheet->setCellValue('H' . $baris_data, $data['alamat_siswa']);
