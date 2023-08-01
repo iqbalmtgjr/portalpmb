@@ -549,18 +549,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="<?php echo base_url(); ?>analisis/index.html" class="nav-link <?php if (!empty($analisregis)) {
-                                                                                                echo 'active';
-                                                                                            } ?>">
-                        <i class="nav-icon fas fa-glasses"></i>
-                        <p>
-                            Analisis Registrasi
-                            <span class="right badge badge-danger">New</span>
-                        </p>
-                    </a>
-                </li>
-
+                <?php if ($this->session->userdata('pengguna_id_simkeu') == "45" || $this->session->userdata('pengguna_id_simkeu') == "53" || $this->session->userdata('pengguna_id_simkeu') == "49" || $this->session->userdata('pengguna_id_simkeu') == "39") { ?>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url(); ?>analisis/index.html" class="nav-link <?php if (!empty($analisregis)) {
+                                                                                                    echo 'active';
+                                                                                                } ?>">
+                            <i class="nav-icon fas fa-glasses"></i>
+                            <p>
+                                Analisis Registrasi
+                                <span class="right badge badge-danger">New</span>
+                            </p>
+                        </a>
+                    </li>
+                <?php } ?>
 
             </ul>
         </nav>

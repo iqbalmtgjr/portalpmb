@@ -62,12 +62,21 @@ $(document).ready(function(){
                     {"data": "akun_siswa"},
                     {"data": "ref"},
                     {"data": "nama_siswa"},
-                    {"data": "tgl_trans"},
+                    {"data": "tgl_trans", 
+                    render: function (data, type, row) {
+                        return '<p>'+row.tgl_trans+'<br><span class="text-danger">Jam '+row.jam_trans+'</span></p>';
+                    }
+                    },
                     {"data": "nama_pengirim"},
-                    {"data": "jlh_bayar"},
+                    {"data": "jlh_bayar",
+                    render: function (data, type, row) {
+                       return formatRupiah(row.jlh_bayar, 'Rp. ');
+                        // return row.jlh_bayar;
+                    }
+                    },
                     {"data": "bukti_bayar", 
                     render: function (data, type, row) {
-                            return '<a href="https://daftar.persadakhatulistiwa.ac.id/bayar/'+row.bukti_bayar+'" target="_blank"><img loading="lazy" class="card-img-top" style="height: 150px; width: 180px; object-fit: cover; object-position: center;" src="https://daftar.persadakhatulistiwa.ac.id/bayar/'+row.bukti_bayar+'" alt=""></a>';
+                            return '<a href="https://daftar.persadakhatulistiwa.ac.id/bayar/'+row.bukti_bayar+'" target="_blank"><img class="card-img-top" style="height: 150px; width: 180px; object-fit: cover; object-position: center;" src="https://daftar.persadakhatulistiwa.ac.id/bayar/'+row.bukti_bayar+'" loading="lazy" alt="slip pembayaran"></a>';
                     }
                     },
               ],
@@ -87,4 +96,21 @@ $(document).ready(function(){
    
   // end setup datatables
     
+  // formatRupiah
+  function formatRupiah(angka, prefix){
+    var number_string = angka.replace(/[^,\d]/g, '').toString(),
+    split   		= number_string.split(','),
+    sisa     		= split[0].length % 3,
+    rupiah     		= split[0].substr(0, sisa),
+    ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
+
+    // tambahkan titik jika yang di input sudah menjadi angka ribuan
+    if(ribuan){
+        separator = sisa ? '.' : '';
+        rupiah += separator + ribuan.join('.');
+    }
+
+    rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+    return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+}
 });
