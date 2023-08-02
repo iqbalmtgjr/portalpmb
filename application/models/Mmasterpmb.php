@@ -631,11 +631,15 @@ class Mmasterpmb extends CI_Model
         $this->datatables->select('id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur,nama_prodi,nama_prodi_baru');
         $this->datatables->from('pmb_siswa');
         $this->datatables->join('pmb_akun', 'akun_siswa = pengenal_akun', 'left');
+        $this->datatables->join('pmb_penerimaan', 'akun_siswa = siswa_penerimaan', 'left');
         $this->datatables->join('pmb_prodi', 'akun_siswa = prodi_id_siswa', 'left');
         $this->datatables->join('prodi', 'pilihan_satu = id_prodi', 'left');
         $this->datatables->join('prod', 'pilihan_dua = id_prodi_baru', 'left');
-        $this->datatables->where('last_login_siswa !=', '');
-        $this->datatables->where('pilihan_satu', 9);
+        // $this->datatables->where('last_login_siswa !=', '');
+        // $this->datatables->where('pilihan_satu', 9);
+        $this->datatables->group_by('id_penerimaan');
+        $this->datatables->where('prodi_penerimaan', 9);
+        $this->datatables->where('status_penerimaan', 1);
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
@@ -650,8 +654,12 @@ class Mmasterpmb extends CI_Model
         $this->datatables->join('pmb_prodi', 'akun_siswa = prodi_id_siswa', 'left');
         $this->datatables->join('prodi', 'pilihan_satu = id_prodi', 'left');
         $this->datatables->join('prod', 'pilihan_dua = id_prodi_baru', 'left');
-        $this->datatables->where('last_login_siswa !=', '');
-        $this->datatables->where('pilihan_satu', 7);
+        $this->datatables->join('pmb_penerimaan', 'akun_siswa = siswa_penerimaan', 'left');
+        $this->datatables->group_by('id_penerimaan');
+        $this->datatables->where('prodi_penerimaan', 7);
+        $this->datatables->where('status_penerimaan', 1);
+        // $this->datatables->where('last_login_siswa !=', '');
+        // $this->datatables->where('pilihan_satu', 7);
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
@@ -665,8 +673,12 @@ class Mmasterpmb extends CI_Model
         $this->datatables->join('pmb_prodi', 'akun_siswa = prodi_id_siswa', 'left');
         $this->datatables->join('prodi', 'pilihan_satu = id_prodi', 'left');
         $this->datatables->join('prod', 'pilihan_dua = id_prodi_baru', 'left');
-        $this->datatables->where('last_login_siswa !=', '');
-        $this->datatables->where('pilihan_satu', 1);
+        // $this->datatables->where('last_login_siswa !=', '');
+        // $this->datatables->where('pilihan_satu', 1);
+        $this->datatables->join('pmb_penerimaan', 'akun_siswa = siswa_penerimaan', 'left');
+        $this->datatables->group_by('id_penerimaan');
+        $this->datatables->where('prodi_penerimaan', 1);
+        $this->datatables->where('status_penerimaan', 1);
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
@@ -681,8 +693,12 @@ class Mmasterpmb extends CI_Model
         $this->datatables->join('pmb_prodi', 'akun_siswa = prodi_id_siswa', 'left');
         $this->datatables->join('prodi', 'pilihan_satu = id_prodi', 'left');
         $this->datatables->join('prod', 'pilihan_dua = id_prodi_baru', 'left');
-        $this->datatables->where('last_login_siswa !=', '');
-        $this->datatables->where('pilihan_satu', 8);
+        // $this->datatables->where('last_login_siswa !=', '');
+        // $this->datatables->where('pilihan_satu', 8);
+        $this->datatables->join('pmb_penerimaan', 'akun_siswa = siswa_penerimaan', 'left');
+        $this->datatables->group_by('id_penerimaan');
+        $this->datatables->where('prodi_penerimaan', 8);
+        $this->datatables->where('status_penerimaan', 1);
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
@@ -697,8 +713,12 @@ class Mmasterpmb extends CI_Model
         $this->datatables->join('pmb_prodi', 'akun_siswa = prodi_id_siswa', 'left');
         $this->datatables->join('prodi', 'pilihan_satu = id_prodi', 'left');
         $this->datatables->join('prod', 'pilihan_dua = id_prodi_baru', 'left');
-        $this->datatables->where('last_login_siswa !=', '');
-        $this->datatables->where('pilihan_satu', 6);
+        // $this->datatables->where('last_login_siswa !=', '');
+        // $this->datatables->where('pilihan_satu', 6);
+        $this->datatables->join('pmb_penerimaan', 'akun_siswa = siswa_penerimaan', 'left');
+        $this->datatables->group_by('id_penerimaan');
+        $this->datatables->where('prodi_penerimaan', 6);
+        $this->datatables->where('status_penerimaan', 1);
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
@@ -713,8 +733,12 @@ class Mmasterpmb extends CI_Model
         $this->datatables->join('pmb_prodi', 'akun_siswa = prodi_id_siswa', 'left');
         $this->datatables->join('prodi', 'pilihan_satu = id_prodi', 'left');
         $this->datatables->join('prod', 'pilihan_dua = id_prodi_baru', 'left');
-        $this->datatables->where('last_login_siswa !=', '');
-        $this->datatables->where('pilihan_satu', 2);
+        // $this->datatables->where('last_login_siswa !=', '');
+        // $this->datatables->where('pilihan_satu', 2);
+        $this->datatables->join('pmb_penerimaan', 'akun_siswa = siswa_penerimaan', 'left');
+        $this->datatables->group_by('id_penerimaan');
+        $this->datatables->where('prodi_penerimaan', 2);
+        $this->datatables->where('status_penerimaan', 1);
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
@@ -729,8 +753,12 @@ class Mmasterpmb extends CI_Model
         $this->datatables->join('pmb_prodi', 'akun_siswa = prodi_id_siswa', 'left');
         $this->datatables->join('prodi', 'pilihan_satu = id_prodi', 'left');
         $this->datatables->join('prod', 'pilihan_dua = id_prodi_baru', 'left');
-        $this->datatables->where('last_login_siswa !=', '');
-        $this->datatables->where('pilihan_satu', 4);
+        // $this->datatables->where('last_login_siswa !=', '');
+        // $this->datatables->where('pilihan_satu', 4);
+        $this->datatables->join('pmb_penerimaan', 'akun_siswa = siswa_penerimaan', 'left');
+        $this->datatables->group_by('id_penerimaan');
+        $this->datatables->where('prodi_penerimaan', 4);
+        $this->datatables->where('status_penerimaan', 1);
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
@@ -745,8 +773,12 @@ class Mmasterpmb extends CI_Model
         $this->datatables->join('pmb_prodi', 'akun_siswa = prodi_id_siswa', 'left');
         $this->datatables->join('prodi', 'pilihan_satu = id_prodi', 'left');
         $this->datatables->join('prod', 'pilihan_dua = id_prodi_baru', 'left');
-        $this->datatables->where('last_login_siswa !=', '');
-        $this->datatables->where('pilihan_satu', 5);
+        // $this->datatables->where('last_login_siswa !=', '');
+        // $this->datatables->where('pilihan_satu', 5);
+        $this->datatables->join('pmb_penerimaan', 'akun_siswa = siswa_penerimaan', 'left');
+        $this->datatables->group_by('id_penerimaan');
+        $this->datatables->where('prodi_penerimaan', 5);
+        $this->datatables->where('status_penerimaan', 1);
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
@@ -762,8 +794,12 @@ class Mmasterpmb extends CI_Model
         $this->datatables->join('pmb_prodi', 'akun_siswa = prodi_id_siswa', 'left');
         $this->datatables->join('prodi', 'pilihan_satu = id_prodi', 'left');
         $this->datatables->join('prod', 'pilihan_dua = id_prodi_baru', 'left');
-        $this->datatables->where('last_login_siswa !=', '');
-        $this->datatables->where('pilihan_satu', 3);
+        // $this->datatables->where('last_login_siswa !=', '');
+        // $this->datatables->where('pilihan_satu', 3);
+        $this->datatables->join('pmb_penerimaan', 'akun_siswa = siswa_penerimaan', 'left');
+        $this->datatables->group_by('id_penerimaan');
+        $this->datatables->where('prodi_penerimaan', 3);
+        $this->datatables->where('status_penerimaan', 1);
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }

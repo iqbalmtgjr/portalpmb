@@ -9,7 +9,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <div class="container-fluid">
 
       <?php echo $this->session->flashdata('pesan'); ?>
-
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
@@ -23,7 +22,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
           <h3 class="card-title">Daftar Pendaftar PMB Prodi <?php if (!empty($pmb)) {
                                                               echo $pmb;
                                                             } ?></h3>
-          <a href="<?= base_url() ?>/masterpmb/exportprodi/<?= $prodi ?>.html" class="btn btn-success float-right" target="_blank"><i class="fas fa-file-excel pr-2"></i>Export Excel</a>
+          <a href="<?= base_url() ?>/masterpmb/exportprodi/<?= $prodi ?>.html" class="btn btn-success float-right ml-2" target="_blank"><i class="fas fa-file-excel pr-2"></i>Export Excel Siakad</a>
+          <a href="<?= base_url() ?>/masterpmb/exportlulus/<?= $prodi ?>.html" class="btn btn-success float-right" target="_blank"><i class="fas fa-file-excel pr-2"></i>Export Excel Lulus</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">

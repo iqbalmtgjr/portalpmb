@@ -1,5 +1,4 @@
 <?php
-
 defined('BASEPATH') or exit('No direct script access allowed');
 require 'vendor/autoload.php';
 
@@ -612,99 +611,6 @@ class Masterpmb extends CI_Controller
         $array_data[] = $extra;
         $final_data = json_encode($array_data);
         echo $final_data;
-    }
-
-    public function exportprodi($id)
-    {
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-
-        foreach (range('A', 'L') as $columnID) {
-            $spreadsheet->getActiveSheet()->getColumnDimension($columnID)->setAutoSize(true);
-        }
-
-        $sheet->setCellValue('A1', 'NIM');
-        $sheet->setCellValue('B1', 'Nama');
-        $sheet->setCellValue('C1', 'Tempat Lahir');
-        $sheet->setCellValue('D1', 'Tanggal Lahir');
-        $sheet->setCellValue('E1', 'Agama');
-        $sheet->setCellValue('F1', 'Jenis Kelamin');
-        $sheet->setCellValue('G1', 'Semester');
-        $sheet->setCellValue('H1', 'Alamat');
-        $sheet->setCellValue('I1', 'Email');
-        $sheet->setCellValue('J1', 'No. Telepon');
-        $sheet->setCellValue('K1', 'Jalur Masuk (TES-1/PMDK-0)');
-        $sheet->setCellValue('L1', 'Gelombang(1,2,3)');
-
-        $this->db->from('bukti_bayar');
-        $this->db->join('pmb_akun', 'akunb_msiswa = pengenal_akun', 'left');
-        $this->db->join('pmb_penerimaan', 'akunb_msiswa = siswa_penerimaan', 'left');
-        $this->db->join('pmb_prodi', 'akunb_msiswa = prodi_id_siswa', 'left');
-        $this->db->join('pmb_siswa', 'akunb_msiswa = akun_siswa', 'left');
-        $this->db->group_by('akunb_msiswa');
-        $this->db->where('prodi_penerimaan', $id);
-        $this->db->where('validasi_bukti', 2);
-
-        $query = $this->db->get()->result_array();
-        $baris_data = 2;
-
-        foreach ($query as $data) {
-            $low_nama = strtolower($data['nama_siswa']);
-            $final_nama = ucwords($low_nama);
-            $sheet->setCellValue('B' . $baris_data, $final_nama);
-            $sheet->setCellValue('C' . $baris_data, $data['tmp_lahir_siswa']);
-            $datak = str_replace('/', '-', $data['tgl_lahir_siswa']);
-            if (!empty($data['tgl_lahir_siswa'])) {
-                $sheet->setCellValue('D' . $baris_data, date("d-m-Y", strtotime($datak)));
-            } else {
-                $sheet->setCellValue('D' . $baris_data, '');
-            }
-            $low_agama = strtolower($data['agama_siswa']);
-            $final_agama = ucwords($low_agama);
-            $sheet->setCellValue('E' . $baris_data, $final_agama);
-            if ($data['jekel_siswa'] == 'wanita') {
-                $sheet->setCellValue('F' . $baris_data, 'P');
-            } else {
-                $sheet->setCellValue('F' . $baris_data, 'L');
-            }
-            $sheet->setCellValue('G' . $baris_data, '1');
-            $sheet->setCellValue('H' . $baris_data, $data['alamat_siswa']);
-            $sheet->setCellValue('I' . $baris_data, $data['email_akun_siswa']);
-            $sheet->setCellValue('J' . $baris_data, $data['hp_siswa']);
-            if ($data['jalur'] == 'test') {
-                $sheet->setCellValue('K' . $baris_data, '1');
-            } else {
-                $sheet->setCellValue('K' . $baris_data, '0');
-            }
-            $sheet->setCellValue('L' . $baris_data, $data['gelombang']);
-            $baris_data++;
-        }
-
-        $writer = new Xlsx($spreadsheet);
-
-        if ($id == 1) {
-            $fileName = 'Data Mahasiswa Prodi PBSI.xlsx';
-        } elseif ($id == 2) {
-            $fileName = 'Data Mahasiswa Prodi PMAT.xlsx';
-        } elseif ($id == 3) {
-            $fileName = 'Data Mahasiswa Prodi PEK.xlsx';
-        } elseif ($id == 4) {
-            $fileName = 'Data Mahasiswa Prodi PKN.xlsx';
-        } elseif ($id == 5) {
-            $fileName = 'Data Mahasiswa Prodi PKOM.xlsx';
-        } elseif ($id == 6) {
-            $fileName = 'Data Mahasiswa Prodi PBIO.xlsx';
-        } elseif ($id == 7) {
-            $fileName = 'Data Mahasiswa Prodi PAUD.xlsx';
-        } elseif ($id == 8) {
-            $fileName = 'Data Mahasiswa Prodi PBI.xlsx';
-        } else {
-            $fileName = 'Data Mahasiswa Prodi PGSD.xlsx';
-        }
-
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: filename="' . $fileName . '"');
-        $writer->save('php://output');
     }
 
 
@@ -3273,5 +3179,176 @@ Dasar
         $array_data[] = $extra;
         $final_data = json_encode($array_data);
         echo $final_data;
+    }
+
+    public function exportprodi($id)
+    {
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        foreach (range('A', 'L') as $columnID) {
+            $spreadsheet->getActiveSheet()->getColumnDimension($columnID)->setAutoSize(true);
+        }
+
+        $sheet->setCellValue('A1', 'NIM');
+        $sheet->setCellValue('B1', 'Nama');
+        $sheet->setCellValue('C1', 'Tempat Lahir');
+        $sheet->setCellValue('D1', 'Tanggal Lahir');
+        $sheet->setCellValue('E1', 'Agama');
+        $sheet->setCellValue('F1', 'Jenis Kelamin');
+        $sheet->setCellValue('G1', 'Semester');
+        $sheet->setCellValue('H1', 'Alamat');
+        $sheet->setCellValue('I1', 'Email');
+        $sheet->setCellValue('J1', 'No. Telepon');
+        $sheet->setCellValue('K1', 'Jalur Masuk (TES-1/PMDK-0)');
+        $sheet->setCellValue('L1', 'Gelombang(1,2,3)');
+
+        // maba regis
+        $this->db->from('bukti_bayar');
+        $this->db->join('pmb_akun', 'akunb_msiswa = pengenal_akun', 'left');
+        $this->db->join('pmb_penerimaan', 'akunb_msiswa = siswa_penerimaan', 'left');
+        $this->db->join('pmb_prodi', 'akunb_msiswa = prodi_id_siswa', 'left');
+        $this->db->join('pmb_siswa', 'akunb_msiswa = akun_siswa', 'left');
+        $this->db->group_by('akunb_msiswa');
+        $this->db->where('prodi_penerimaan', $id);
+        $this->db->where('validasi_bukti', 2);
+
+        $query = $this->db->get()->result_array();
+        $baris_data = 2;
+
+        foreach ($query as $data) {
+            $low_nama = strtolower($data['nama_siswa']);
+            $final_nama = ucwords($low_nama);
+            $sheet->setCellValue('B' . $baris_data, $final_nama);
+            $sheet->setCellValue('C' . $baris_data, $data['tmp_lahir_siswa']);
+            $datak = str_replace('/', '-', $data['tgl_lahir_siswa']);
+            if (!empty($data['tgl_lahir_siswa'])) {
+                $sheet->setCellValue('D' . $baris_data, date("d-m-Y", strtotime($datak)));
+            } else {
+                $sheet->setCellValue('D' . $baris_data, '');
+            }
+            $low_agama = strtolower($data['agama_siswa']);
+            $final_agama = ucwords($low_agama);
+            $sheet->setCellValue('E' . $baris_data, $final_agama);
+            if ($data['jekel_siswa'] == 'wanita') {
+                $sheet->setCellValue('F' . $baris_data, 'P');
+            } else {
+                $sheet->setCellValue('F' . $baris_data, 'L');
+            }
+            $sheet->setCellValue('G' . $baris_data, '1');
+            $sheet->setCellValue('H' . $baris_data, $data['alamat_siswa']);
+            $sheet->setCellValue('I' . $baris_data, $data['email_akun_siswa']);
+            $sheet->setCellValue('J' . $baris_data, $data['hp_siswa']);
+            if ($data['jalur'] == 'test') {
+                $sheet->setCellValue('K' . $baris_data, '1');
+            } else {
+                $sheet->setCellValue('K' . $baris_data, '0');
+            }
+            $sheet->setCellValue('L' . $baris_data, $data['gelombang']);
+            $baris_data++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+
+        if ($id == 1) {
+            $fileName = 'Data Mahasiswa Prodi PBSI.xlsx';
+        } elseif ($id == 2) {
+            $fileName = 'Data Mahasiswa Prodi PMAT.xlsx';
+        } elseif ($id == 3) {
+            $fileName = 'Data Mahasiswa Prodi PEK.xlsx';
+        } elseif ($id == 4) {
+            $fileName = 'Data Mahasiswa Prodi PKN.xlsx';
+        } elseif ($id == 5) {
+            $fileName = 'Data Mahasiswa Prodi PKOM.xlsx';
+        } elseif ($id == 6) {
+            $fileName = 'Data Mahasiswa Prodi PBIO.xlsx';
+        } elseif ($id == 7) {
+            $fileName = 'Data Mahasiswa Prodi PAUD.xlsx';
+        } elseif ($id == 8) {
+            $fileName = 'Data Mahasiswa Prodi PBI.xlsx';
+        } else {
+            $fileName = 'Data Mahasiswa Prodi PGSD.xlsx';
+        }
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: filename="' . $fileName . '"');
+        $writer->save('php://output');
+    }
+
+    public function exportlulus($id)
+    {
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        foreach (range('A', 'L') as $columnID) {
+            $spreadsheet->getActiveSheet()->getColumnDimension($columnID)->setAutoSize(true);
+        }
+
+        $sheet->setCellValue('A1', 'No');
+        $sheet->setCellValue('B1', 'Nama');
+        $sheet->setCellValue('C1', 'Tempat Lahir');
+        $sheet->setCellValue('D1', 'Tanggal Lahir');
+        $sheet->setCellValue('E1', 'Agama');
+        $sheet->setCellValue('F1', 'Jenis Kelamin');
+        $sheet->setCellValue('G1', 'Semester');
+        $sheet->setCellValue('H1', 'Alamat');
+        $sheet->setCellValue('I1', 'Email');
+        $sheet->setCellValue('J1', 'No. Telepon');
+        $sheet->setCellValue('K1', 'Jalur Masuk (TES-1/PMDK-0)');
+        $sheet->setCellValue('L1', 'Gelombang(1,2,3)');
+
+        // maba lulus
+        $this->db->from('pmb_siswa');
+        $this->db->join('pmb_akun', 'akun_siswa = pengenal_akun', 'left');
+        $this->db->join('pmb_penerimaan', 'akun_siswa = siswa_penerimaan', 'left');
+        $this->db->join('pmb_prodi', 'akun_siswa = prodi_id_siswa', 'left');
+        $this->db->join('bukti_bayar', 'akun_siswa = akunb_msiswa', 'left');
+        $this->db->group_by('id_penerimaan');
+        $this->db->where('status_penerimaan', 1);
+        $this->db->where('prodi_penerimaan', $id);
+
+        $query = $this->db->get()->result_array();
+        $baris_data = 2;
+        $no = 1;
+        foreach ($query as $data) {
+            $sheet->setCellValue('A' . $baris_data, $no++);
+            $sheet->setCellValue('B' . $baris_data, $data['nama_siswa']);
+            $sheet->setCellValue('C' . $baris_data, $data['tmp_lahir_siswa']);
+            $sheet->setCellValue('D' . $baris_data, $data['tgl_lahir_siswa']);
+            $sheet->setCellValue('E' . $baris_data, $data['agama_siswa']);
+            $sheet->setCellValue('F' . $baris_data, $data['jekel_siswa']);
+            $sheet->setCellValue('H' . $baris_data, $data['alamat_siswa']);
+            $sheet->setCellValue('I' . $baris_data, $data['email_akun_siswa']);
+            $sheet->setCellValue('J' . $baris_data, $data['hp_siswa']);
+            $sheet->setCellValue('K' . $baris_data, $data['jalur']);
+            $sheet->setCellValue('L' . $baris_data, $data['gelombang']);
+            $baris_data++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+
+        if ($id == 1) {
+            $fileName = 'Data Mahasiswa Prodi PBSI.xlsx';
+        } elseif ($id == 2) {
+            $fileName = 'Data Mahasiswa Prodi PMAT.xlsx';
+        } elseif ($id == 3) {
+            $fileName = 'Data Mahasiswa Prodi PEK.xlsx';
+        } elseif ($id == 4) {
+            $fileName = 'Data Mahasiswa Prodi PKN.xlsx';
+        } elseif ($id == 5) {
+            $fileName = 'Data Mahasiswa Prodi PKOM.xlsx';
+        } elseif ($id == 6) {
+            $fileName = 'Data Mahasiswa Prodi PBIO.xlsx';
+        } elseif ($id == 7) {
+            $fileName = 'Data Mahasiswa Prodi PAUD.xlsx';
+        } elseif ($id == 8) {
+            $fileName = 'Data Mahasiswa Prodi PBI.xlsx';
+        } else {
+            $fileName = 'Data Mahasiswa Prodi PGSD.xlsx';
+        }
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: filename="' . $fileName . '"');
+        $writer->save('php://output');
     }
 }

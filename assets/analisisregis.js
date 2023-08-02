@@ -71,7 +71,6 @@ $(document).ready(function(){
                     {"data": "jlh_bayar",
                     render: function (data, type, row) {
                        return formatRupiah(row.jlh_bayar, 'Rp. ');
-                        // return row.jlh_bayar;
                     }
                     },
                     {"data": "bukti_bayar", 
