@@ -544,24 +544,62 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <i class="nav-icon fas fa-file"></i>
                         <p>
                             Surat Keputusan
-                            <span class="right badge badge-danger">New</span>
+                            <!-- <span class="right badge badge-danger">New</span> -->
                         </p>
                     </a>
                 </li>
 
-                <?php if ($this->session->userdata('pengguna_id_simkeu') == "45" || $this->session->userdata('pengguna_id_simkeu') == "53" || $this->session->userdata('pengguna_id_simkeu') == "49" || $this->session->userdata('pengguna_id_simkeu') == "39") { ?>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url(); ?>analisis/index.html" class="nav-link <?php if (!empty($analisregis)) {
-                                                                                                    echo 'active';
-                                                                                                } ?>">
+                <li class="nav-item has-treeview <?php if (!empty($analisis)) {
+                                                        echo 'menu-open';
+                                                    } ?>">
+                    <a href="#" class="nav-link <?php if (!empty($analisis)) {
+                                                    echo 'active';
+                                                } ?>">
+                        <i class="nav-icon fas fa-glasses"></i>
+                        <p>
+                            Analisis Registrasi
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo base_url(); ?>analisis/index.html" class="nav-link <?php if (!empty($analisregis)) {
+                                                                                                        echo 'active';
+                                                                                                    } ?>">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Sudah Registrasi
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo base_url(); ?>analisis/belumbayar.html" class="nav-link <?php if (!empty($blmbayarregis)) {
+                                                                                                            echo 'active';
+                                                                                                        } ?>">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Belum Registrasi
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <?php // if ($this->session->userdata('pengguna_id_simkeu') == "45" || $this->session->userdata('pengguna_id_simkeu') == "53" || $this->session->userdata('pengguna_id_simkeu') == "49" || $this->session->userdata('pengguna_id_simkeu') == "39") { 
+                ?>
+                <!-- <li class="nav-item">
+                        <a href="<?php //echo base_url(); 
+                                    ?>analisis/index.html" class="nav-link <?php //if (!empty($analisregis)) {echo 'active'; } 
+                                                                            ?>">
                             <i class="nav-icon fas fa-glasses"></i>
                             <p>
                                 Analisis Registrasi
                                 <span class="right badge badge-danger">New</span>
                             </p>
                         </a>
-                    </li>
-                <?php } ?>
+                    </li> -->
+                <?php //} 
+                ?>
 
             </ul>
         </nav>
