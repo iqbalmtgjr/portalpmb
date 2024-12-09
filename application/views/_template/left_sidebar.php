@@ -351,72 +351,72 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="<?php echo base_url(); ?>masterpmb/pgsdregis.html" class="nav-link <?php if (!empty($pmbregis) && $pmbregis == 'pgsdregis') {
-                                                                                                            echo 'active';
-                                                                                                        } ?>">
+                                                                                                                echo 'active';
+                                                                                                            } ?>">
                                     <i class="fa fa-minus nav-icon"></i>
                                     <p>PGSD</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?php echo base_url(); ?>masterpmb/pgpaudregis.html" class="nav-link <?php if (!empty($pmbregis) && $pmbregis == 'pgpaudregis') {
-                                                                                                                echo 'active';
-                                                                                                            } ?>">
+                                                                                                                    echo 'active';
+                                                                                                                } ?>">
                                     <i class="fa fa-minus nav-icon"></i>
                                     <p>PG-PAUD</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?php echo base_url(); ?>masterpmb/pbsiregis.html" class="nav-link <?php if (!empty($pmbregis) && $pmbregis == 'pbsiregis') {
-                                                                                                            echo 'active';
-                                                                                                        } ?>">
+                                                                                                                echo 'active';
+                                                                                                            } ?>">
                                     <i class="fa fa-minus nav-icon"></i>
                                     <p>PBSI</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?php echo base_url(); ?>masterpmb/pbiregis.html" class="nav-link <?php if (!empty($pmbregis) && $pmbregis == 'pbiregis') {
-                                                                                                            echo 'active';
-                                                                                                        } ?>">
+                                                                                                                echo 'active';
+                                                                                                            } ?>">
                                     <i class="fa fa-minus nav-icon"></i>
                                     <p>PBI</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?php echo base_url(); ?>masterpmb/pbioregis.html" class="nav-link <?php if (!empty($pmbregis) && $pmbregis == 'pbioregis') {
-                                                                                                            echo 'active';
-                                                                                                        } ?>">
+                                                                                                                echo 'active';
+                                                                                                            } ?>">
                                     <i class="fa fa-minus nav-icon"></i>
                                     <p>P BIOLOGI</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?php echo base_url(); ?>masterpmb/pmatregis.html" class="nav-link <?php if (!empty($pmbregis) && $pmbregis == 'pmatregis') {
-                                                                                                            echo 'active';
-                                                                                                        } ?>">
+                                                                                                                echo 'active';
+                                                                                                            } ?>">
                                     <i class="fa fa-minus nav-icon"></i>
                                     <p>P MATEMATIKA</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?php echo base_url(); ?>masterpmb/ppknregis.html" class="nav-link <?php if (!empty($pmbregis) && $pmbregis == 'ppknregis') {
-                                                                                                            echo 'active';
-                                                                                                        } ?>">
+                                                                                                                echo 'active';
+                                                                                                            } ?>">
                                     <i class="fa fa-minus nav-icon"></i>
                                     <p>PPKN</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?php echo base_url(); ?>masterpmb/komputerregis.html" class="nav-link <?php if (!empty($pmbregis) && $pmbregis == 'komputerregis') {
-                                                                                                                echo 'active';
-                                                                                                            } ?>">
+                                                                                                                    echo 'active';
+                                                                                                                } ?>">
                                     <i class="fa fa-minus nav-icon"></i>
                                     <p>P KOMPUTER</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?php echo base_url(); ?>masterpmb/ekonomiregis.html" class="nav-link <?php if (!empty($pmbregis) && $pmbregis == 'ekonomiregis') {
-                                                                                                                echo 'active';
-                                                                                                            } ?>">
+                                                                                                                    echo 'active';
+                                                                                                                } ?>">
                                     <i class="fa fa-minus nav-icon"></i>
                                     <p>P EKONOMI</p>
                                 </a>
@@ -425,7 +425,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </li><!-- /.PMB -->
                 <?php } ?>
 
-                <?php if ($this->session->userdata('pengguna_id_simkeu') == "45" || $this->session->userdata('pengguna_id_simkeu') == "53" || $this->session->userdata('pengguna_id_simkeu') == "49" || $this->session->userdata('pengguna_id_simkeu') == "39" || $this->session->userdata('pengguna_id_simkeu') == "46")  { ?>
+                <?php if ($this->session->userdata('pengguna_id_simkeu') == "45" || $this->session->userdata('pengguna_id_simkeu') == "53" || $this->session->userdata('pengguna_id_simkeu') == "49" || $this->session->userdata('pengguna_id_simkeu') == "39" || $this->session->userdata('pengguna_id_simkeu') == "46") { ?>
                     <li class="nav-item has-treeview <?php if (!empty($pmbx)) {
                                                             echo 'menu-open';
                                                         } ?>">
@@ -465,6 +465,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             </li>
                         </ul>
                     </li><!-- /.PMB -->
+
+                    <li class="nav-item">
+                        <a href="<?php echo base_url(); ?>midtrans/index.html" class="nav-link <?php if (!empty($midtrans)) {
+                                                                                                    echo 'active';
+                                                                                                } ?>">
+                            <i class="fas fa-credit-card nav-icon"></i>
+                            <p>
+                                Midtrans
+                            </p>
+                        </a>
+                    </li>
 
                     <li class="nav-item has-treeview <?php if (!empty($bank)) {
                                                             echo 'menu-open';
@@ -617,17 +628,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </li><!-- /.akhir pengguna -->
 
                 <?php if ($this->session->userdata('pangkat_simkeu') == "admin") { ?>
-                <li class="nav-item">
-                    <a href="<?php echo base_url(); ?>masterpmb/sk.html" class="nav-link <?php if (!empty($sk)) {
-                                                                                                echo 'active';
-                                                                                            } ?>">
-                        <i class="nav-icon fas fa-file"></i>
-                        <p>
-                            Surat Keputusan
-                            <!-- <span class="right badge badge-danger">New</span> -->
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url(); ?>masterpmb/sk.html" class="nav-link <?php if (!empty($sk)) {
+                                                                                                    echo 'active';
+                                                                                                } ?>">
+                            <i class="nav-icon fas fa-file"></i>
+                            <p>
+                                Surat Keputusan
+                                <!-- <span class="right badge badge-danger">New</span> -->
+                            </p>
+                        </a>
+                    </li>
                 <?php } ?>
 
                 <li class="nav-item has-treeview <?php if (!empty($pkkmb)) {
@@ -714,16 +725,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </li>
                 <?php } ?>
                 <?php if ($this->session->userdata('pangkat_simkeu') == "admin") { ?>
-                <li class="nav-item">
-                    <a href="<?php echo base_url(); ?>analisis/sekolah.html" class="nav-link <?php if (!empty($sk)) {
-                                                                                                    echo 'active';
-                                                                                                } ?>">
-                        <i class="nav-icon fas fa-school"></i>
-                        <p>
-                            Analisis Asal Sekolah
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url(); ?>analisis/sekolah.html" class="nav-link <?php if (!empty($sk)) {
+                                                                                                        echo 'active';
+                                                                                                    } ?>">
+                            <i class="nav-icon fas fa-school"></i>
+                            <p>
+                                Analisis Asal Sekolah
+                            </p>
+                        </a>
+                    </li>
                 <?php } ?>
 
 
