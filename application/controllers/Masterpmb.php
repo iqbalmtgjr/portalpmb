@@ -43,9 +43,7 @@ class Masterpmb extends CI_Controller
         echo $final_data;
     }
     // Daftar pendaftar yang tidak pernah login
-    public function penvalido()
-    {
-    }
+    public function penvalido() {}
     public function no()
     {
         $data = array(
@@ -642,7 +640,7 @@ class Masterpmb extends CI_Controller
         $final_data = json_encode($array_data);
         echo $final_data;
     }
-    
+
     public function pgsdregis()
     {
         $data = array(
@@ -668,7 +666,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-prodiregis', $data);
     }
-    
+
     function get_pgsdregis_json()
     {
         $dutu = $this->pmb->get_all_pgsdregis();
@@ -732,7 +730,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-prodiregis', $data);
     }
-    
+
     function get_pgpaudregis_json()
     {
         $dutu = $this->pmb->get_all_pgpaudregis();
@@ -757,7 +755,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-pmbprodi', $data);
     }
-    
+
     function get_pbsi_json()
     {
         $dutu = $this->pmb->get_all_pbsi();
@@ -770,7 +768,7 @@ class Masterpmb extends CI_Controller
         $final_data = json_encode($array_data);
         echo $final_data;
     }
-    
+
     public function pbsiregis()
     {
         $data = array(
@@ -796,7 +794,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-prodiregis', $data);
     }
-    
+
     function get_pbsiregis_json()
     {
         $dutu = $this->pmb->get_all_pbsiregis();
@@ -821,7 +819,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-pmbprodi', $data);
     }
-    
+
     function get_pbi_json()
     {
         $dutu = $this->pmb->get_all_pbi();
@@ -834,7 +832,7 @@ class Masterpmb extends CI_Controller
         $final_data = json_encode($array_data);
         echo $final_data;
     }
-    
+
     public function pbiregis()
     {
         $data = array(
@@ -860,7 +858,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-prodiregis', $data);
     }
-    
+
     function get_pbiregis_json()
     {
         $dutu = $this->pmb->get_all_pbiregis();
@@ -885,7 +883,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-pmbprodi', $data);
     }
-    
+
     function get_pbio_json()
     {
         $dutu = $this->pmb->get_all_pbio();
@@ -924,7 +922,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-prodiregis', $data);
     }
-    
+
     function get_pbioregis_json()
     {
         $dutu = $this->pmb->get_all_pbioregis();
@@ -961,7 +959,7 @@ class Masterpmb extends CI_Controller
         $final_data = json_encode($array_data);
         echo $final_data;
     }
-    
+
     public function pmatregis()
     {
         $data = array(
@@ -987,7 +985,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-prodiregis', $data);
     }
-    
+
     function get_pmatregis_json()
     {
         $dutu = $this->pmb->get_all_pmatregis();
@@ -1012,7 +1010,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-pmbprodi', $data);
     }
-    
+
     function get_ppkn_json()
     {
         $dutu = $this->pmb->get_all_ppkn();
@@ -1025,7 +1023,7 @@ class Masterpmb extends CI_Controller
         $final_data = json_encode($array_data);
         echo $final_data;
     }
-    
+
     public function ppknregis()
     {
         $data = array(
@@ -1051,7 +1049,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-prodiregis', $data);
     }
-    
+
     function get_ppknregis_json()
     {
         $dutu = $this->pmb->get_all_ppknregis();
@@ -1076,7 +1074,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-pmbprodi', $data);
     }
-    
+
     function get_komputer_json()
     {
         $dutu = $this->pmb->get_all_komputer();
@@ -1089,7 +1087,7 @@ class Masterpmb extends CI_Controller
         $final_data = json_encode($array_data);
         echo $final_data;
     }
-    
+
     public function komputerregis()
     {
         $data = array(
@@ -1115,7 +1113,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-prodiregis', $data);
     }
-    
+
     function get_komputerregis_json()
     {
         $dutu = $this->pmb->get_all_komputerregis();
@@ -1140,7 +1138,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-pmbprodi', $data);
     }
-    
+
     function get_ekonomi_json()
     {
         $dutu = $this->pmb->get_all_ekonomi();
@@ -1153,7 +1151,7 @@ class Masterpmb extends CI_Controller
         $final_data = json_encode($array_data);
         echo $final_data;
     }
-    
+
     public function ekonomiregis()
     {
         $data = array(
@@ -1179,7 +1177,7 @@ class Masterpmb extends CI_Controller
         );
         $this->template->view('pmb/tbl-prodiregis', $data);
     }
-    
+
     function get_ekonomiregis_json()
     {
         $dutu = $this->pmb->get_all_ekonomiregis();
@@ -1323,7 +1321,7 @@ class Masterpmb extends CI_Controller
         $data['prodi2'] = $this->pmb->ambil_satuprodi($prodiid2)->row();
         $this->template->view('pmb/data-calon', $data);
     }
-    
+
     public function bayar($id = 0)
     {
         $cekputus = $this->pmb->cekkeputusan($id);
@@ -2022,7 +2020,7 @@ Dasar
                 $dateParts = explode('/', $tgl_lahir); // Pisahkan menjadi array [dd, mm, yyyy]
                 $format_tgl_lahir = $dateParts[2] . '-' . $dateParts[1] . '-' . $dateParts[0];
                 // print_r($format_tgl_lahir);die;
-                
+
                 $datamasuk = array(
                     'nik_siswa' => $datacalon['nik'],
                     'nis_siswa' => $datacalon['nis'],

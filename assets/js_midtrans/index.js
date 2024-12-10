@@ -58,6 +58,7 @@ $(document).ready(function(){
                     {"data": "", render: function (data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }},
+                    {"data": "id"},
                     {"data": "order_id"},
                     {"data": "nama_siswa"},
                     {"data": "email"},
@@ -89,8 +90,9 @@ $(document).ready(function(){
             
               order: [[1, 'desc']],
             "columnDefs": [
-            { "orderable": false, "targets": 1 },
-            { "orderable": false, "targets": 6 },
+            { "orderable": false, "targets": 2 },
+            { "orderable": false, "targets": 7 },
+            { "visible": false, "targets": 1 },
             { "orderable": false, "searchable": false, "targets": 0 },
             ],
     
@@ -98,6 +100,12 @@ $(document).ready(function(){
   });
    
   // end setup datatables
+
+  $('#mytable').on('click','.delete_record',function(){
+    var code=$(this).data('code');
+    $('#ModalDelete').modal('show');
+    $('[name="order_id"]').val(code);
+});
     
   // formatRupiah
   function formatRupiah(angka, prefix){

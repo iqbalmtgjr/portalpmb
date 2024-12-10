@@ -624,7 +624,7 @@ class Mmasterpmb extends CI_Model
         }
         return $this->datatables->generate();
     }
-    
+
     public function get_all_pgsd()
     {
 
@@ -644,7 +644,7 @@ class Mmasterpmb extends CI_Model
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
-    
+
     public function get_all_pgsdregis()
     {
         $alamat = base_url();
@@ -681,7 +681,7 @@ class Mmasterpmb extends CI_Model
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
-    
+
     public function get_all_pgpaudregis()
     {
         $alamat = base_url();
@@ -698,7 +698,7 @@ class Mmasterpmb extends CI_Model
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a>', 'id_siswa,akunb_msiswa');
         return $this->datatables->generate();
     }
-    
+
     public function get_all_pbsi()
     {
 
@@ -719,7 +719,7 @@ class Mmasterpmb extends CI_Model
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
-    
+
     public function get_all_pbsiregis()
     {
         $alamat = base_url();
@@ -736,7 +736,7 @@ class Mmasterpmb extends CI_Model
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a>', 'id_siswa,akunb_msiswa');
         return $this->datatables->generate();
     }
-    
+
     public function get_all_pbsi2()
     {
 
@@ -774,7 +774,7 @@ class Mmasterpmb extends CI_Model
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
-    
+
     public function get_all_pbiregis()
     {
         $alamat = base_url();
@@ -811,7 +811,7 @@ class Mmasterpmb extends CI_Model
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
-    
+
     public function get_all_pbioregis()
     {
         $alamat = base_url();
@@ -848,7 +848,7 @@ class Mmasterpmb extends CI_Model
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
-    
+
     public function get_all_pmatregis()
     {
         $alamat = base_url();
@@ -885,7 +885,7 @@ class Mmasterpmb extends CI_Model
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
-    
+
     public function get_all_ppknregis()
     {
         $alamat = base_url();
@@ -922,7 +922,7 @@ class Mmasterpmb extends CI_Model
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
-    
+
     public function get_all_komputerregis()
     {
         $alamat = base_url();
@@ -959,7 +959,7 @@ class Mmasterpmb extends CI_Model
         $this->datatables->add_column('view', '<a href="' . $alamat . 'masterpmb/lihatsiswa/$2"><i class="fas fa-eye pr-2"></i></a><a href="' . $alamat . 'masterpmb/pdflihat/$2.html" target="_blank"><i class="fas fa-file-pdf pr-2"></i></a>', 'id_siswa,akun_siswa,nis_siswa,nama_siswa,pilihan_satu,pilihan_dua,jalur');
         return $this->datatables->generate();
     }
-    
+
     public function get_all_ekonomiregis()
     {
         $alamat = base_url();
